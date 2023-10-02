@@ -1,0 +1,45 @@
+#include<stdio.h>
+
+void Apilar(char elemento, char Pila[], int *tope, int TamPila){
+ if(*tope == -1){
+  Pila[TamPila - 1] = elemento;
+  *tope = TamPila - 1;
+ }
+ else if(*tope == 0){
+  printf("La pila está llena. \n");
+ }
+ else{
+  Pila[(*tope) - 1] = elemento;
+  (*tope)--;
+ }
+}
+void Desapilar(char Pila[], int *tope, int TamPila){
+ if(*tope == -1){
+   printf("La pila está vacía. \n");
+ }
+ else{
+  printf("Elemento sacado: %c \n", Pila[(*tope)]);
+  if((*tope) == TamPila - 1){
+    (*tope) = -1;
+  }
+  else{
+    (*tope)++;
+  }
+ }
+}
+
+int main() {
+  int TamPila = 4;
+  char UnaPila[TamPila];
+  int tope = -1;
+  Apilar('a', UnaPila, &tope, TamPila);
+  printf("Elemento del tope: %c\n", UnaPila[tope]);
+  Apilar('b',UnaPila, &tope, TamPila);
+  printf("Elemento del tope: %c\n", UnaPila[tope]);
+  Desapilar(UnaPila, &tope, TamPila);
+  printf("Elemento del tope: %c\n", UnaPila[tope]);
+  Desapilar(UnaPila, &tope, TamPila);
+  printf("Tope: %d\n", tope);
+  Desapilar(UnaPila, &tope, TamPila);
+  return 0;
+}
